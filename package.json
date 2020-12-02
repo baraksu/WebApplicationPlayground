@@ -4,11 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "watch-debug": "concurrently  \"npm run watch-ts\" \"npm run serve-debug\"",
-    "start": "tsc  && node dist/app.js",
-    "serve-debug": "nodemon -L -w ./src -e ts dist/app.js",
-    "dev": "nodemon -w ./src -e ts ./src/app.ts",
-    "watch-ts": "tsc -w"
+    "devAPI": "nodemon -w ./API -e ts ./API/app.ts"
+    
   },
   "author": "",
   "license": "ISC",
