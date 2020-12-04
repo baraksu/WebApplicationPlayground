@@ -1,3 +1,4 @@
+import {Books} from './books/books';
 import { NextFunction, Request, Response } from 'express';
 class MyController {
   defaultMethod(): any {
@@ -7,9 +8,16 @@ class MyController {
   }
 
   getMy(req: Request, res: Response, next: NextFunction): void {
-    res.json({
-      text: `You've reached the ${req.path} default method`
+
+    
+    const books = new Books();
+    books.add().then((b) => {
+      res.send(`document saved ${b.id}`);
     });
+
+
+
+
   }
 }
 
