@@ -1,6 +1,7 @@
 import {  BookModel, IBookDocument } from './book.model';
-import { Book } from '../../dto/book';
-import mongoose from 'mongoose';
+import {Query} from 'mongoose';
+
+
 import 'dotenv/config';
 
 
@@ -13,13 +14,6 @@ export class Books {
     add(): Promise<IBookDocument> {
 
 
-        mongoose.connect(`mongodb://localhost/books`, {
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-        }   , () => {
-    console.log('connect to database');
-        });
 
         // const book = new Book({
         //     title: 't1',
@@ -31,8 +25,8 @@ export class Books {
         // bookModel.save();
 
         const book01 = BookModel.create({
-            title: 't45',
-            message: 'm45'
+            title: 't46',
+            message: 'm46'
         });
 
 
@@ -43,6 +37,19 @@ export class Books {
 
 
      }
+    getBooks(): Promise<IBookDocument[]> {
+
+        return new Promise<IBookDocument[]>((resolve) => {
+
+            const query = BookModel.find();
+
+            query.then(books => {
+
+                resolve(books);
+            });
+
+        });
+    }
 
 }
 

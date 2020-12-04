@@ -10,7 +10,6 @@ class MyController {
 
   getMy(req: Request, res: Response, next: NextFunction): void {
 
-    res.send('my');
     const books = new Books();
     books.add().then((b) => {
       res.send(`document saved ${b.id}`);
