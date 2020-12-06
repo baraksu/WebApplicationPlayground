@@ -1,14 +1,10 @@
 
 import { NextFunction, Request, Response } from 'express';
 import { Books } from './books/books';
-class MyController {
-  defaultMethod(): any {
-    return {
-      text: `You've reached the ${this.constructor.name} default method`
-    };
-  }
+export default class MyController {
 
-  getMy(req: Request, res: Response, next: NextFunction): void {
+
+  static getMy(req: Request, res: Response, next: NextFunction): void {
 
     // const books = new Books();
     // books.add().then((b) => {
@@ -19,6 +15,9 @@ class MyController {
 
 
   }
+  defaultMethod(): any {
+    return {
+      text: `You've reached the ${this.constructor.name} default method`
+    };
+  }
 }
-
-export = new MyController();
