@@ -6,7 +6,8 @@ const bookSchema: Schema = new Schema ({
     title: {
         type: String
     },
-    message: String
+    message: String,
+
 });
 
 // tslint:disable-next-line: no-empty-interface

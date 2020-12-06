@@ -1,56 +1,24 @@
-import {  BookModel, IBookDocument } from './book.model';
-import {Query} from 'mongoose';
-
-
+import { IBook } from './../../dto/ibook';
+import {  BookModel, IBookDocument, } from './book.model';
+import {Query, FilterQuery} from 'mongoose';
 import 'dotenv/config';
-
-
 export class Books {
 
     constructor(){
-
     }
 
-    add(): Promise<IBookDocument> {
+    save(book: IBookDocument): Promise<IBookDocument> {
 
-
-
-        // const book = new Book({
-        //     title: 't1',
-        //     message: 'm4'
-        // });
-
-        // const bookModel = new BookModel(book);
-
-        // bookModel.save();
-
-        const book01 = BookModel.create({
-            title: 't46',
-            message: 'm46'
-        });
-
-
+        const book01 = BookModel.create(book);
 
         return book01;
-
-
-
-
      }
-    getBooks(): Promise<IBookDocument[]> {
-
-        return new Promise<IBookDocument[]>((resolve) => {
-
-            const query = BookModel.find();
-
-            query.then(books => {
-
-                resolve(books);
-            });
-
-        });
+    getBooks(book: FilterQuery<IBookDocument>): Promise<IBookDocument[]> {
+        return BookModel.find(book).exec();
     }
-
+    getBookById(id: string): Promise<IBookDocument| null>{
+        return BookModel.findById(id).exec();
+    }
 }
 
 
